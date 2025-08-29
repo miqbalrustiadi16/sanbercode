@@ -1,0 +1,12 @@
+class DashboardPage {
+    goToDirectory() {
+        cy.contains('Directory').click();
+    }
+
+    verifyDirectoryPage() {
+        cy.url().should('include', '/directory');
+        cy.get('h6').should('contain.text', 'Directory');
+    }
+}
+
+export default new DashboardPage();
