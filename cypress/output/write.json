@@ -1,0 +1,13 @@
+{
+  "login": {
+    "status": "success",
+    "welcomeText": "Ana A1lyousef"
+  },
+  "forgotPassword": {
+    "status": "success",
+    "message": "Reset Password link sent successfully"
+  },
+  "dashboard": {
+    "pageTitle": "Dashboard"
+  }
+}

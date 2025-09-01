@@ -1,23 +1,17 @@
-class LoginPage {
-    visit() {
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    }
+import loginPage from '../support/page/loginPage'; // pastikan path ini benar
 
-    enterUsername(username) {
-        cy.get('input[name="username"]').type(username);
-    }
+describe('Login Test with POM and Fixture', () => {
+  beforeEach(() => {
+    loginPage.visit();
+  });
 
-    enterPassword(password) {
-        cy.get('input[name="password"]').type(password);
-    }
+  it('should login successfully using fixture credentials', () => {
+    cy.fixture('credentials').then(({ username, password }) => {
+      loginPage.enterUsername(username);
+      loginPage.enterPassword(password);
+      loginPage.clickLogin();
+    });
 
-    clickLogin() {
-        cy.get('button[type="submit"]').click();
-    }
-
-    clickForgotPassword() {
-        cy.contains('Forgot your password?').click();
-    }
-}
-
-export default new LoginPage();
+    loginPage.verifyLoginSuccess();
+  });
+});
